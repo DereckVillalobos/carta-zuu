@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Un universo contigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas class="starfield" aria-hidden="true"></canvas>
+
+    <div class="page-shell">
+      <section class="gate" id="gate">
+        <div class="gate__panel glass-card">
+          <p class="eyebrow">Carta secreta</p>
+          <h1>Hay un pequeño universo esperándote</h1>
+          <p class="gate__copy">
+            Contraseña secreta: ¿cuáles son las flores favoritas de zuu?
+          </p>
+          <form class="gate__form" id="gate-form">
+            <label class="sr-only" for="secret-answer">Respuesta</label>
+            <input
+              id="secret-answer"
+              name="secret-answer"
+              type="text"
+              autocomplete="off"
+              placeholder="Escribe la respuesta..."
+              maxlength="80"
+            />
+            <button id="unlock-button" type="submit">Descubrir</button>
+          </form>
+          <p class="gate__hint" id="gate-message">
+            Pista: florecen bonito y se visten de rosa.
+          </p>
+        </div>
+      </section>
+
+      <main class="experience hidden" id="experience">
+        <header class="hero glass-card reveal">
+          <p class="eyebrow">Para ti, preciosa</p>
+          <h2>PARA CHICA MAS LINDA DEL UNIVERSO</h2>
+        </header>
+
+        <section class="stats reveal">
+          <article class="stat-card glass-card">
+            <span
+              class="stat-card__value"
+              data-counter="1000000000000000000000000"
+              data-suffix="+"
+            >
+              0
+            </span>
+            <span class="stat-card__label">estrellas estimadas en el universo observable</span>
+          </article>
+          <article class="stat-card glass-card">
+            <span class="stat-card__value" data-counter="6000" data-suffix="+">0</span>
+            <span class="stat-card__label">exoplanetas confirmados hasta ahora</span>
+          </article>
+          <article class="stat-card glass-card">
+            <span class="stat-card__value" data-counter="2000000000000">0</span>
+            <span class="stat-card__label">galaxias estimadas allá afuera</span>
+          </article>
+          <article class="stat-card glass-card">
+            <span class="stat-card__value" data-counter="8230000000">0</span>
+            <span class="stat-card__label">personas compartiendo este mundo hoy</span>
+          </article>
+        </section>
+
+        <section class="journey">
+          <div class="journey__visual">
+            <div class="orbit-scene glass-card" id="orbit-scene">
+              <div class="scene-copy">
+                <p class="eyebrow hidden" id="scene-kicker"></p>
+                <h3 id="scene-title">QUE ONDA PRECIOSISIMA</h3>
+                <p class="hidden" id="scene-description"></p>
+              </div>
+
+              <div class="solar-stage" id="solar-stage" data-focus="sun">
+                <div class="space-glow"></div>
+                <div class="sun"></div>
+
+                <div class="orbit orbit--mercury">
+                  <div class="planet planet--mercury"></div>
+                </div>
+                <div class="orbit orbit--venus">
+                  <div class="planet planet--venus"></div>
+                </div>
+                <div class="orbit orbit--earth">
+                  <div class="planet planet--earth"></div>
+                  <div class="moon-orbit">
+                    <div class="moon"></div>
+                  </div>
+                </div>
+                <div class="orbit orbit--mars">
+                  <div class="planet planet--mars"></div>
+                </div>
+                <div class="orbit orbit--jupiter">
+                  <div class="planet planet--jupiter"></div>
+                </div>
+                <div class="orbit orbit--saturn">
+                  <div class="planet planet--saturn">
+                    <span class="planet-ring"></span>
+                  </div>
+                </div>
+                <div class="orbit orbit--uranus">
+                  <div class="planet planet--uranus"></div>
+                </div>
+                <div class="orbit orbit--neptune">
+                  <div class="planet planet--neptune"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey__letter">
+            <article class="letter-card glass-card reveal">
+              <div class="letter-card__top">
+                <p class="letter-card__eyebrow">Carta para ti</p>
+                <span class="letter-card__stamp">TQM tonota</span>
+              </div>
+
+              <div class="letter-card__body">
+                <p
+                  class="letter-step is-active"
+                  data-focus="sun"
+                  data-kicker=""
+                  data-title="QUE ONDA PRECIOSISIMA"
+                  data-description=""
+                >
+                  Zu, no sé si vos también lo sentís, pero yo adoro pasar el tiempo junto a ti.
+                  Siento tanta calma, tanta felicidad, y sobre todo un cariño que no sé cómo
+                  explicarte. Es un sentimiento que con palabras solo se limita, porque va mucho
+                  más allá de ellas. Es honesto, es profundo, y es muy tuyo.
+                </p>
+
+                <p
+                  class="letter-step"
+                  data-focus="moon"
+                  data-kicker="Carta 03"
+                  data-title="Tus detalles"
+                  data-description="Amo tus lunares, tus ojos y sobre todo tu sonrisa linda."
+                >
+                  Amo tus lunares, tus ojos, y sobre todo tu linda sonrisa. Y si te soy sincero,
+                  cada cosita tuya me encanta, cada detalle que para vos parezca insignificante,
+                  para mí es muy importante.
+                </p>
+
+                <p
+                  class="letter-step"
+                  data-focus="venus"
+                  data-kicker="Carta 04"
+                  data-title="Tu forma de ser"
+                  data-description="Adoro tu forma de ser y lo bonito que se ha vuelto mi día a día por vos."
+                >
+                  Adoro tu forma de ser. Últimamente mi día a día es bonito porque sé que tú vas a
+                  estar en algún momento del día (me tenés sonriéndole al cel por cierto, boba).
+                  Amo reír contigo, abrazarte, y conocerte cada vez más, porque eres alguien muy
+                  interesante, muy linda, y con un corazón enorme. Eres una super chineada bobilla
+                  ♡
+                </p>
+
+                <p
+                  class="letter-step"
+                  data-focus="saturn"
+                  data-kicker="Carta 05"
+                  data-title="Lo que me cuesta decir"
+                  data-description="A veces me cuesta expresar con palabras todo lo que siento, pero eso no quita lo mucho que te quiero."
+                >
+                  Hace poco te lo dije, que me cuesta mucho expresar con palabras todo lo que
+                  siento. Pero eso no es excusa para no decirte al menos un poquito de lo mucho que
+                  te quiero.
+                </p>
+
+                <p
+                  class="letter-step"
+                  data-focus="jupiter"
+                  data-kicker="Carta 06"
+                  data-title="Tu llegada"
+                  data-description="No sé qué hice para merecerte, pero sí sé que llegaste en el tiempo perfecto."
+                >
+                  No sé qué hice para merecerte, ni dónde estuviste todo este tiempo. Pero sé que
+                  el tiempo es de Dios y que en Él todo es perfecto. Por eso no me queda duda de
+                  que sos la bendición más hermosa que me ha pasado.
+                </p>
+
+                <blockquote
+                  class="letter-quote letter-step"
+                  data-focus="neptune"
+                  data-kicker="Carta 07"
+                  data-title="Qué suerte haberte conocido"
+                  data-description="Entre estrellas, exoplanetas, galaxias y miles de millones de personas, me siento el más afortunado de haberte conocido."
+                >
+                  Entre 1 septillón de estrellas, más de 6,000 exoplanetas confirmados, 2 billones
+                  de galaxias y 8.2 mil millones de personas en el mundo, me siento el más
+                  afortunado de haberte conocido. Simplemente eres increíble tonota&lt;33
+                </blockquote>
+
+                <p
+                  class="letter-step"
+                  data-focus="neptune"
+                  data-kicker="Carta 08"
+                  data-title="Lo último que quería decirte"
+                  data-description="Te quiero montones y solo quiero que estés bien, tonota."
+                >
+                  Te quiero montones linda. La sorpresa te la doy otro día, pero mientras tanto
+                  tomáte algo, no quiero que después quedes tiesa tonota. (MENTIRA JKAKAJKA pero es
+                  que no quiero que te enfermes muucho&lt;3)
+                </p>
+              </div>
+
+              <div class="letter-card__closing">
+                <p>Con todo el cariño,</p>
+                <strong>Dereck ♡</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="closing glass-card reveal">
+          <p class="closing__line">
+            Tu sonrisa brilla más que mil estrellas, tqm nindura.
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const SECRET_ANSWERS = new Set([
+        "lirios rosados",
+        "los lirios rosados",
+        "lirio rosado",
+        "lirio rosa",
+        "lirios rosa",
+      ]);
+
+      const gate = document.querySelector("#gate");
+      const gateForm = document.querySelector("#gate-form");
+      const gateMessage = document.querySelector("#gate-message");
+      const secretInput = document.querySelector("#secret-answer");
+      const experience = document.querySelector("#experience");
+      const unlockButton = document.querySelector("#unlock-button");
+      const stage = document.querySelector("#solar-stage");
+      const sceneKicker = document.querySelector("#scene-kicker");
+      const sceneTitle = document.querySelector("#scene-title");
+      const sceneDescription = document.querySelector("#scene-description");
+      const revealItems = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+      const letterSteps = Array.prototype.slice.call(document.querySelectorAll(".letter-step"));
+      const counterItems = Array.prototype.slice.call(document.querySelectorAll("[data-counter]"));
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let unlockTimer = null;
+
+      function normalizeText(value) {
+        return value
+          .trim()
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[.,!?]/g, "")
+          .replace(/\s+/g, " ");
+      }
+
+      function trimDecimal(value) {
+        return value.replace(/\.0$/, "");
+      }
+
+      function getCounterScale(target) {
+        if (target >= 1000000000000000000000000) {
+          return {
+            divisor: 1000000000000000000000000,
+            singular: " septillón",
+            plural: " septillones",
+          };
+        }
+
+        if (target >= 1000000000000) {
+          return {
+            divisor: 1000000000000,
+            singular: " billón",
+            plural: " billones",
+          };
+        }
+
+        if (target >= 1000000000) {
+          return {
+            divisor: 1000000000,
+            singular: " mil millones",
+            plural: " mil millones",
+          };
+        }
+
+        if (target >= 1000000) {
+          return {
+            divisor: 1000000,
+            singular: " millón",
+            plural: " millones",
+          };
+        }
+
+        return null;
+      }
+
+      function formatBigNumber(value, target, suffix) {
+        const scale = getCounterScale(target);
+
+        if (!scale) {
+          return new Intl.NumberFormat("es-CR").format(value) + suffix;
+        }
+
+        const scaledTarget = target / scale.divisor;
+        const scaledValue = value / scale.divisor;
+        const decimals = scaledTarget < 10 ? 1 : 0;
+        const formattedValue = trimDecimal(scaledValue.toFixed(decimals));
+        const unitLabel = Number(formattedValue) === 1 ? scale.singular : scale.plural;
+
+        return formattedValue + unitLabel + suffix;
+      }
+
+      function animateCounter(node) {
+        const target = Number(node.dataset.counter);
+        const suffix = node.dataset.suffix ? node.dataset.suffix : "";
+        const duration = prefersReducedMotion ? 0 : 2200;
+        const start = performance.now();
+
+        function step(now) {
+          const progress = duration === 0 ? 1 : Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+
+          node.textContent = formatBigNumber(current, target, suffix);
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            node.textContent = formatBigNumber(target, target, suffix);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      function unlockExperience() {
+        gate.classList.add("hidden");
+        experience.classList.remove("hidden");
+        document.body.classList.add("experience-open");
+
+        revealItems.forEach(function (item) {
+          const rect = item.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.92) {
+            item.classList.add("is-visible");
+          }
+        });
+
+        counterItems.forEach(animateCounter);
+
+        setTimeout(function () {
+          window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+          });
+        }, 40);
+      }
+
+      function handleUnlockAttempt() {
+        const answer = normalizeText(secretInput.value);
+
+        if (SECRET_ANSWERS.has(answer)) {
+          gateMessage.textContent = "Acceso concedido. Bienvenida a tu pequeño universo.";
+          gateMessage.classList.remove("is-error");
+          unlockExperience();
+          return true;
+        }
+
+        gateMessage.textContent =
+          "Mmm... casi. Pista extra: son flores delicadas y van vestidas de rosa.";
+        gateMessage.classList.add("is-error");
+        secretInput.select();
+        return false;
+      }
+
+      gateForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        handleUnlockAttempt();
+      });
+
+      unlockButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        handleUnlockAttempt();
+      });
+
+      secretInput.addEventListener("input", function () {
+        if (unlockTimer) {
+          clearTimeout(unlockTimer);
+          unlockTimer = null;
+        }
+
+        if (SECRET_ANSWERS.has(normalizeText(secretInput.value))) {
+          unlockTimer = setTimeout(function () {
+            handleUnlockAttempt();
+          }, 240);
+        }
+      });
+
+      const revealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        {
+          threshold: 0.18,
+        }
+      );
+
+      revealItems.forEach(function (item) {
+        revealObserver.observe(item);
+      });
+
+      function setActiveStep(step) {
+        letterSteps.forEach(function (item) {
+          item.classList.toggle("is-active", item === step);
+        });
+
+        stage.dataset.focus = step.dataset.focus;
+        sceneKicker.textContent = step.dataset.kicker;
+        sceneTitle.textContent = step.dataset.title;
+        sceneDescription.textContent = step.dataset.description;
+        sceneKicker.classList.toggle("hidden", !step.dataset.kicker);
+        sceneDescription.classList.toggle("hidden", !step.dataset.description);
+      }
+
+      const letterObserver = new IntersectionObserver(
+        function (entries) {
+          const visibleEntries = entries
+            .filter(function (entry) {
+              return entry.isIntersecting;
+            })
+            .sort(function (a, b) {
+              return b.intersectionRatio - a.intersectionRatio;
+            });
+
+          if (visibleEntries[0]) {
+            setActiveStep(visibleEntries[0].target);
+          }
+        },
+        {
+          rootMargin: "-20% 0px -35% 0px",
+          threshold: [0.2, 0.4, 0.6, 0.8],
+        }
+      );
+
+      letterSteps.forEach(function (step) {
+        letterObserver.observe(step);
+      });
+
+      function initStarfield() {
+        const canvas = document.querySelector(".starfield");
+        const context = canvas.getContext("2d");
+        const stars = [];
+
+        function resize() {
+          const density = Math.min(window.devicePixelRatio, 2);
+
+          canvas.width = window.innerWidth * density;
+          canvas.height = window.innerHeight * density;
+          canvas.style.width = window.innerWidth + "px";
+          canvas.style.height = window.innerHeight + "px";
+          context.setTransform(1, 0, 0, 1, 0, 0);
+          context.scale(density, density);
+
+          stars.length = 0;
+          const starCount = Math.max(160, Math.floor(window.innerWidth * 0.18));
+
+          for (let index = 0; index < starCount; index += 1) {
+            stars.push({
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              radius: Math.random() * 1.8 + 0.3,
+              alpha: Math.random() * 0.8 + 0.2,
+              speed: Math.random() * 0.18 + 0.02,
+            });
+          }
+        }
+
+        function draw() {
+          context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+          stars.forEach(function (star) {
+            star.y += star.speed;
+
+            if (star.y > window.innerHeight) {
+              star.y = -4;
+              star.x = Math.random() * window.innerWidth;
+            }
+
+            context.beginPath();
+            context.fillStyle = "rgba(255, 255, 255, " + star.alpha + ")";
+            context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            context.fill();
+          });
+
+          if (!prefersReducedMotion) {
+            requestAnimationFrame(draw);
+          }
+        }
+
+        resize();
+        draw();
+        window.addEventListener("resize", resize);
+      }
+
+      initStarfield();
+      if (letterSteps[0]) {
+        letterSteps[0].classList.add("is-active");
+      }
+    </script>
+  </body>
+</html>
